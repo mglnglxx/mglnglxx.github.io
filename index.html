@@ -7,10 +7,34 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Geist:wght@700&display=swap');
+
+    /* Fix for mobile viewport height */
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+    }
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Geist', sans-serif;
+    }
+    .dynamic-height {
+      height: 100vh;
+    }
+
+    @media (max-width: 768px) {
+      .text-dynamic {
+        font-size: 38px; /* Smaller font for mobile */
+        line-height: 45px; /* Tighter line-height for mobile */
+      }
+    }
   </style>
 </head>
-<body class="bg-white flex items-center justify-center h-[100vh] overflow-hidden m-0 px-6">
-  <h1 class="text-black font-bold text-[42px] leading-[50px] md:text-[72px] md:leading-[89px] tracking-[-0.03em] text-center" style="font-family: 'Geist', sans-serif;">
+<body>
+  <h1 class="dynamic-height text-black font-bold text-[42px] leading-[50px] md:text-[72px] md:leading-[89px] tracking-[-0.03em] text-center text-dynamic">
     la vie est une condition des sens
   </h1>
 </body>

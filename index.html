@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>des sens</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>◎</text></svg>">
@@ -28,11 +28,17 @@
       height: calc(var(--vh, 1vh) * 100);
     }
 
+    /* Default (desktop) line height */
+    .text-dynamic {
+      line-height: 56px; /* desktop line-height */
+    }
+
+    /* Adjust font sizes, line-height, and padding on mobile */
     @media (max-width: 768px) {
-      /* Adjust font size and line-height for mobile */
       .text-dynamic {
-        font-size: 40px;
-        line-height: 1.2;
+        font-size: 32px; /* smaller on mobile */
+        line-height: 36px; /* tighter line-height on mobile */
+        padding: 0 1rem; /* add horizontal padding on mobile */
       }
     }
   </style>
@@ -45,16 +51,12 @@
   </script>
 </head>
 <body class="dynamic-height">
-  <!-- Container with background image -->
-  <div class="relative w-full h-full bg-cover bg-center" style="background-image: url('horses.jpeg');">
-    <!-- Optional overlay for contrast -->
-    <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+  <div class="relative w-full h-full">
+    <!-- Background Image Overlay with ~80% opacity -->
+    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('horses.jpeg'); opacity:0.8;"></div>
 
-    <!-- Centered content -->
-    <div class="relative z-10 flex items-center justify-center h-full">
-      <h1 class="text-white font-bold tracking-[-0.03em] text-center px-4 sm:px-8 
-                 text-[42px] leading-tight md:text-[72px] md:leading-[89px] text-dynamic
-                 max-w-[90%] md:max-w-[50%]">
+    <div class="relative w-full h-full flex items-center justify-center">
+      <h1 class="text-white font-bold text-[42px] md:text-[72px] tracking-[-0.03em] text-center text-dynamic">
         la vie est une condition des sens
       </h1>
     </div>

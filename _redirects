@@ -1,2 +1,2 @@
-/momsgarden /momsgarden/index.html 200
-/momsgarden/* https://zippy-pegasus-fad5cb.netlify.app/:splat 200!
+/momsgarden    https://zippy-pegasus-fad5cb.netlify.app/   200!
+/momsgarden/*  https://zippy-pegasus-fad5cb.netlify.app/:splat  200!

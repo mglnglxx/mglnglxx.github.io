@@ -34,26 +34,36 @@
       color:#111827;
     }
 
-    /* Better responsive typography */
-    .text-dynamic{ 
-      line-height: 1.2;
-      font-size: clamp(28px, 5vw, 48px);
-    }
-    
-    /* Mobile-specific improvements */
-    @media (max-width: 768px) { 
-      .text-dynamic{ 
-        line-height: 1.3;
-        font-size: clamp(24px, 6vw, 36px);
-        padding: 0 1.5rem;
-      }
-      
-      /* Ensure sections are full height on mobile */
-      section {
-        min-height: 100vh;
-        min-height: 100dvh; /* Dynamic viewport height for mobile */
-      }
-    }
+         /* Consistent typography across all devices */
+     .text-dynamic{ 
+       line-height: 1.1;
+       font-size: 48px;
+       font-weight: 400; /* Ensure normal weight */
+     }
+     
+     /* Mobile adjustments - keep same size, just adjust line-height */
+     @media (max-width: 768px) { 
+       .text-dynamic{ 
+         line-height: 0.9;
+         font-size: 48px; /* Same size as desktop */
+         font-weight: 400; /* Ensure normal weight */
+       }
+       
+       /* Ensure proper centering on mobile */
+       section {
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         min-height: 100vh;
+         min-height: 100dvh;
+         padding: 1rem;
+       }
+       
+       section > div, section > h1 {
+         text-align: center;
+         width: 100%;
+       }
+     }
 
     /* Prevent line break - keep "condition des sens" together */
     .no-break {

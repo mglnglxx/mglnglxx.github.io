@@ -14,40 +14,72 @@
 
   <style>
     :root{ 
-      --vh:100%; 
+      --vh:100vh; 
       --progress:0; 
     }
 
-    html,body{ margin:0; padding:0; min-height:100%; }
+    html,body{ 
+      margin:0; 
+      padding:0; 
+      min-height:100%; 
+      width: 100%;
+      overflow-x: hidden;
+    }
+    
     body{
       font-family:'Geist',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
       background:#fff;
-      overflow-x:hidden;
       text-rendering:optimizeLegibility;
       -webkit-font-smoothing:antialiased;
       color:#111827;
     }
 
-    .text-dynamic{ line-height:1.1 }
-    @media (max-width:768px){ .text-dynamic{ line-height:0.9; padding:0 1rem } }
+    /* Better responsive typography */
+    .text-dynamic{ 
+      line-height: 1.2;
+      font-size: clamp(28px, 5vw, 48px);
+    }
+    
+    /* Mobile-specific improvements */
+    @media (max-width: 768px) { 
+      .text-dynamic{ 
+        line-height: 1.3;
+        font-size: clamp(24px, 6vw, 36px);
+        padding: 0 1.5rem;
+      }
+      
+      /* Ensure sections are full height on mobile */
+      section {
+        min-height: 100vh;
+        min-height: 100dvh; /* Dynamic viewport height for mobile */
+      }
+    }
 
-         @media (prefers-reduced-motion:reduce){
-       /* Reduced motion preferences */
-     }
+    /* Prevent line break - keep "condition des sens" together */
+    .no-break {
+      white-space: nowrap;
+    }
 
-     /* Prevent line break - keep "condition des sens" together */
-     .no-break {
-       white-space: nowrap;
-     }
+    @media (prefers-reduced-motion:reduce){
+      /* Reduced motion preferences */
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
   </style>
 
   <script>
-    // stable 100vh on mobile
-    function setVH(){ document.documentElement.style.setProperty('--vh', `${window.innerHeight*0.01}px`); }
+    // Better mobile viewport handling
+    function setVH(){ 
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    }
+    
     addEventListener('load', setVH, {passive:true});
     addEventListener('resize', setVH, {passive:true});
-
-         // No circle animations needed
+    addEventListener('orientationchange', setVH, {passive:true});
 
     // Polaroid color palette with random selection
     const polaroidColors = [
@@ -68,94 +100,95 @@
       '#ffeaa7', // cream
     ];
 
-         // Slower, random color animation
-     function animateDesSens() {
-       const el = document.getElementById('des-sens-color');
-       if (!el) return;
-       
-       (function tick(){
-         const randomColor = polaroidColors[Math.floor(Math.random() * polaroidColors.length)];
-         el.style.color = randomColor;
-         setTimeout(tick, 300 + Math.random() * 200); // Random timing between 300-500ms
-       })();
-     }
+    // Slower, random color animation
+    function animateDesSens() {
+      const el = document.getElementById('des-sens-color');
+      if (!el) return;
+      
+      (function tick(){
+        const randomColor = polaroidColors[Math.floor(Math.random() * polaroidColors.length)];
+        el.style.color = randomColor;
+        setTimeout(tick, 300 + Math.random() * 200); // Random timing between 300-500ms
+      })();
+    }
 
-         // Initialize animation on load
-     addEventListener('load', ()=>{ 
-       animateDesSens(); 
-     }, {passive:true});
+    // Initialize animation on load
+    addEventListener('load', ()=>{ 
+      animateDesSens(); 
+    }, {passive:true});
   </script>
 </head>
-  <body>
+<body>
 
   <!-- Section 1 -->
-  <section class="min-h-screen flex items-center justify-center relative z-10">
-    <div class="max-w-4xl text-center px-8">
-      <h2 class="text-[44px] sm:text-[48px] font-normal tracking-[-0.02em] leading-tight text-dynamic">
+  <section class="min-h-screen flex items-center justify-center relative z-10 px-4">
+    <div class="max-w-4xl text-center">
+      <h2 class="text-dynamic font-normal tracking-[-0.02em] leading-tight">
         This is not a brand. It is an understanding.
       </h2>
     </div>
   </section>
 
   <!-- Section 2 -->
-  <section class="min-h-screen flex items-center justify-center relative z-10">
-    <div class="max-w-4xl text-center px-8">
-      <h2 class="text-[44px] sm:text-[48px] font-normal tracking-[-0.02em] leading-tight text-dynamic">
+  <section class="min-h-screen flex items-center justify-center relative z-10 px-4">
+    <div class="max-w-4xl text-center">
+      <h2 class="text-dynamic font-normal tracking-[-0.02em] leading-tight">
         An inside joke. An open secret. A contradiction you are meant to feel.
       </h2>
     </div>
   </section>
 
   <!-- Section 3 -->
-  <section class="min-h-screen flex items-center justify-center relative z-10">
-    <div class="max-w-4xl text-center px-8">
-      <h2 class="text-[44px] sm:text-[48px] font-normal tracking-[-0.02em] leading-tight text-dynamic">
+  <section class="min-h-screen flex items-center justify-center relative z-10 px-4">
+    <div class="max-w-4xl text-center">
+      <h2 class="text-dynamic font-normal tracking-[-0.02em] leading-tight">
         It rejects performance, status, spectacle.
       </h2>
     </div>
   </section>
 
   <!-- Section 4 -->
-  <section class="min-h-screen flex items-center justify-center relative z-10">
-    <div class="max-w-4xl text-center px-8">
-      <h2 class="text-[44px] sm:text-[48px] font-normal tracking-[-0.02em] leading-tight text-dynamic">
+  <section class="min-h-screen flex items-center justify-center relative z-10 px-4">
+    <div class="max-w-4xl text-center">
+      <h2 class="text-dynamic font-normal tracking-[-0.02em] leading-tight">
         It calls you to stop, to notice, to breathe—then to reshape the world from what you truly see.
       </h2>
     </div>
   </section>
 
   <!-- Section 5 -->
-  <section class="min-h-screen flex items-center justify-center relative z-10">
-    <div class="max-w-4xl text-center px-8">
-      <h2 class="text-[44px] sm:text-[48px] font-normal tracking-[-0.02em] leading-tight text-dynamic">
+  <section class="min-h-screen flex items-center justify-center relative z-10 px-4">
+    <div class="max-w-4xl text-center">
+      <h2 class="text-dynamic font-normal tracking-[-0.02em] leading-tight">
         It is when you hear the silence behind the noise.
       </h2>
     </div>
   </section>
 
   <!-- Section 6 -->
-  <section class="min-h-screen flex items-center justify-center relative z-10">
-    <div class="max-w-4xl text-center px-8">
-      <h2 class="text-[44px] sm:text-[48px] font-normal tracking-[-0.02em] leading-tight text-dynamic">
+  <section class="min-h-screen flex items-center justify-center relative z-10 px-4">
+    <div class="max-w-4xl text-center">
+      <h2 class="text-dynamic font-normal tracking-[-0.02em] leading-tight">
         When you taste the air and feel your body again—your feet on the ground, your hands on the wheel.
       </h2>
     </div>
   </section>
 
   <!-- Section 7 -->
-  <section class="min-h-screen flex items-center justify-center relative z-10">
-    <div class="max-w-4xl text-center px-8">
-      <h2 class="text-[44px] sm:text-[48px] font-normal tracking-[-0.02em] leading-tight text-dynamic">
+  <section class="min-h-screen flex items-center justify-center relative z-10 px-4">
+    <div class="max-w-4xl text-center">
+      <h2 class="text-dynamic font-normal tracking-[-0.02em] leading-tight">
         When you remember that life isn't something you follow, but a will you bring forth.
       </h2>
     </div>
   </section>
 
-     <!-- Final section with French axiom -->
-   <section class="min-h-screen flex items-center justify-center relative z-10">
-     <h1 class="text-[44px] sm:text-[48px] font-normal tracking-[-0.02em] text-center leading-tight max-w-4xl px-8 text-dynamic">
-       La vie est une condition <span id="des-sens-color" class="no break">des sens</span></span>
-     </h1>
-   </section>
+  <!-- Final section with French axiom -->
+  <section class="min-h-screen flex items-center justify-center relative z-10 px-4">
+    <h1 class="text-dynamic font-normal tracking-[-0.02em] text-center leading-tight max-w-4xl">
+      La vie est une condition <span id="des-sens-color" class="no-break">des sens</span>
+    </h1>
+  </section>
+
 </body>
 </html>

@@ -4,62 +4,158 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>des sens</title>
+
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>◎</text></svg>">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;700&display=swap" rel="stylesheet">
+
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Geist:wght@700&display=swap');
-
-    :root {
-      --vh: 100%;
+    :root{ 
+      --vh:100%; 
+      --progress:0; 
     }
 
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      overflow: hidden;
+    html,body{ margin:0; padding:0; min-height:100%; }
+    body{
+      font-family:'Geist',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:#fff;
+      overflow-x:hidden;
+      text-rendering:optimizeLegibility;
+      -webkit-font-smoothing:antialiased;
+      color:#111827;
     }
 
-    body {
-      font-family: 'Geist', sans-serif;
-    }
+    .text-dynamic{ line-height:1.1 }
+    @media (max-width:768px){ .text-dynamic{ line-height:0.9; padding:0 1rem } }
 
-    .dynamic-height {
-      height: calc(var(--vh, 1vh) * 100);
-    }
+         @media (prefers-reduced-motion:reduce){
+       /* Reduced motion preferences */
+     }
 
-    /* Default (desktop) line height */
-    .text-dynamic {
-      line-height: 56px; /* desktop line-height */
-    }
-
-    /* Adjust font sizes, line-height, and padding on mobile */
-    @media (max-width: 768px) {
-      .text-dynamic {
-        font-size: 32px; /* smaller on mobile */
-        line-height: 36px; /* tighter line-height on mobile */
-        padding: 0 1rem; /* add horizontal padding on mobile */
-      }
-    }
+     /* Prevent line break - keep "condition des sens" together */
+     .no-break {
+       white-space: nowrap;
+     }
   </style>
+
   <script>
-    function setVH() {
-      document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
-    }
-    window.addEventListener('resize', setVH);
-    window.addEventListener('load', setVH);
+    // stable 100vh on mobile
+    function setVH(){ document.documentElement.style.setProperty('--vh', `${window.innerHeight*0.01}px`); }
+    addEventListener('load', setVH, {passive:true});
+    addEventListener('resize', setVH, {passive:true});
+
+         // No circle animations needed
+
+    // Polaroid color palette with random selection
+    const polaroidColors = [
+      '#ff9a8b', // coral pink
+      '#ffeaa7', // warm yellow
+      '#fab1a0', // peach
+      '#fd79a8', // bright pink
+      '#fdcb6e', // vintage orange
+      '#6c5ce7', // lavender
+      '#a29bfe', // soft purple
+      '#74b9ff', // sky blue
+      '#55efc4', // mint green
+      '#ff7675', // salmon
+      '#fd79a8', // rose
+      '#fdcb6e', // amber
+      '#e17055', // terracotta
+      '#81ecec', // aqua
+      '#ffeaa7', // cream
+    ];
+
+         // Slower, random color animation
+     function animateDesSens() {
+       const el = document.getElementById('des-sens-color');
+       if (!el) return;
+       
+       (function tick(){
+         const randomColor = polaroidColors[Math.floor(Math.random() * polaroidColors.length)];
+         el.style.color = randomColor;
+         setTimeout(tick, 300 + Math.random() * 200); // Random timing between 300-500ms
+       })();
+     }
+
+         // Initialize animation on load
+     addEventListener('load', ()=>{ 
+       animateDesSens(); 
+     }, {passive:true});
   </script>
 </head>
-<body class="dynamic-height">
-  <div class="relative w-full h-full">
-    <!-- Background Image Overlay with ~80% opacity -->
-    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('horses.jpeg'); opacity:0.8;"></div>
+  <body>
 
-    <div class="relative w-full h-full flex items-center justify-center">
-      <h1 class="text-white font-bold text-[42px] md:text-[72px] tracking-[-0.03em] text-center text-dynamic">
-        la vie est une condition des sens
-      </h1>
+  <!-- Section 1 -->
+  <section class="min-h-screen flex items-center justify-center relative z-10">
+    <div class="max-w-4xl text-center px-8">
+      <h2 class="text-[44px] sm:text-[48px] font-normal tracking-[-0.02em] leading-tight text-dynamic">
+        This is not a brand. It is an understanding.
+      </h2>
     </div>
-  </div>
+  </section>
+
+  <!-- Section 2 -->
+  <section class="min-h-screen flex items-center justify-center relative z-10">
+    <div class="max-w-4xl text-center px-8">
+      <h2 class="text-[44px] sm:text-[48px] font-normal tracking-[-0.02em] leading-tight text-dynamic">
+        An inside joke. An open secret. A contradiction you are meant to feel.
+      </h2>
+    </div>
+  </section>
+
+  <!-- Section 3 -->
+  <section class="min-h-screen flex items-center justify-center relative z-10">
+    <div class="max-w-4xl text-center px-8">
+      <h2 class="text-[44px] sm:text-[48px] font-normal tracking-[-0.02em] leading-tight text-dynamic">
+        It rejects performance, status, spectacle.
+      </h2>
+    </div>
+  </section>
+
+  <!-- Section 4 -->
+  <section class="min-h-screen flex items-center justify-center relative z-10">
+    <div class="max-w-4xl text-center px-8">
+      <h2 class="text-[44px] sm:text-[48px] font-normal tracking-[-0.02em] leading-tight text-dynamic">
+        It calls you to stop, to notice, to breathe—then to reshape the world from what you truly see.
+      </h2>
+    </div>
+  </section>
+
+  <!-- Section 5 -->
+  <section class="min-h-screen flex items-center justify-center relative z-10">
+    <div class="max-w-4xl text-center px-8">
+      <h2 class="text-[44px] sm:text-[48px] font-normal tracking-[-0.02em] leading-tight text-dynamic">
+        It is when you hear the silence behind the noise.
+      </h2>
+    </div>
+  </section>
+
+  <!-- Section 6 -->
+  <section class="min-h-screen flex items-center justify-center relative z-10">
+    <div class="max-w-4xl text-center px-8">
+      <h2 class="text-[44px] sm:text-[48px] font-normal tracking-[-0.02em] leading-tight text-dynamic">
+        When you taste the air and feel your body again—your feet on the ground, your hands on the wheel.
+      </h2>
+    </div>
+  </section>
+
+  <!-- Section 7 -->
+  <section class="min-h-screen flex items-center justify-center relative z-10">
+    <div class="max-w-4xl text-center px-8">
+      <h2 class="text-[44px] sm:text-[48px] font-normal tracking-[-0.02em] leading-tight text-dynamic">
+        When you remember that life isn't something you follow, but a will you bring forth.
+      </h2>
+    </div>
+  </section>
+
+     <!-- Final section with French axiom -->
+   <section class="min-h-screen flex items-center justify-center relative z-10">
+     <h1 class="text-[44px] sm:text-[48px] font-normal tracking-[-0.02em] text-center leading-tight max-w-4xl px-8 text-dynamic">
+       La vie est une condition <span id="des-sens-color" class="no break">des sens</span></span>
+     </h1>
+   </section>
 </body>
 </html>

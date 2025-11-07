@@ -6,200 +6,97 @@
   <title>des sens</title>
 
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>◎</text></svg>">
-  <script defer src="https://cdn.tailwindcss.com"></script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
-    :root{ 
-      --vh:100vh; 
-      --progress:0; 
-    }
-
-    html,body{ 
-      margin:0; 
-      padding:0; 
-      min-height:100%; 
+    html, body { 
+      margin: 0; 
+      padding: 0; 
+      min-height: 100%; 
       width: 100%;
-      overflow-x: hidden;
+      overflow: hidden;
     }
     
-    body{
-      font-family:'Geist',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      background:#fff;
-      text-rendering:optimizeLegibility;
-      -webkit-font-smoothing:antialiased;
-      color:#111827;
+    body {
+      font-family: 'Geist', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
     }
 
-         /* Consistent typography across all devices */
-     .text-dynamic{ 
-       line-height: 1.1;
-       font-size: 48px;
-       font-weight: 400; /* Ensure normal weight */
-       letter-spacing: -0.01em; /* Tighter letter spacing */
-     }
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      height: 100dvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('assets/gallery/horses.jpeg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index: -1;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.2);
+      z-index: -1;
+    }
+
+    h1 {
+      font-size: 120px;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 0.8;
+      text-align: center;
+      color: white;
+      margin: 0;
+      max-width: 1200px;
+    }
      
-     /* Mobile adjustments - smaller font, more line height */
-     @media (max-width: 768px) { 
-       .text-dynamic{ 
-         line-height: 1.2;
-         font-size: 36px; /* Smaller than desktop */
-         font-weight: 400; /* Ensure normal weight */
-       }
-       
-       /* Ensure proper centering on mobile */
-       section {
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         min-height: 100vh;
-         min-height: 100dvh;
-         padding: 1rem;
-       }
-       
-       section > div, section > h1 {
-         text-align: center;
-         width: 100%;
-       }
-     }
-
-    /* Prevent line break - keep "condition des sens" together */
-    .no-break {
-      white-space: nowrap;
+    @media (max-width: 768px) { 
+      h1 { 
+        font-size: 56px;
+        line-height: 1.4;
+      }
     }
 
-    @media (prefers-reduced-motion:reduce){
-      /* Reduced motion preferences */
-      * {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
+    @media (max-width: 480px) { 
+      h1 { 
+        font-size: 42px;
+        line-height: 1.5;
+      }
+      
+      .hero {
+        padding: 1.5rem;
       }
     }
   </style>
-
-  <script>
-    // Better mobile viewport handling
-    function setVH(){ 
-      const vh = window.innerHeight * 0.01;
-      document.documentElement.style.setProperty('--vh', `${vh}px`);
-    }
-    
-    addEventListener('load', setVH, {passive:true});
-    addEventListener('resize', setVH, {passive:true});
-    addEventListener('orientationchange', setVH, {passive:true});
-
-    // Polaroid color palette with random selection
-    const polaroidColors = [
-      '#ff9a8b', // coral pink
-      '#ffeaa7', // warm yellow
-      '#fab1a0', // peach
-      '#fd79a8', // bright pink
-      '#fdcb6e', // vintage orange
-      '#6c5ce7', // lavender
-      '#a29bfe', // soft purple
-      '#74b9ff', // sky blue
-      '#55efc4', // mint green
-      '#ff7675', // salmon
-      '#fd79a8', // rose
-      '#fdcb6e', // amber
-      '#e17055', // terracotta
-      '#81ecec', // aqua
-      '#ffeaa7', // cream
-    ];
-
-    // Slower, random color animation
-    function animateDesSens() {
-      const el = document.getElementById('des-sens-color');
-      if (!el) return;
-      
-      (function tick(){
-        const randomColor = polaroidColors[Math.floor(Math.random() * polaroidColors.length)];
-        el.style.color = randomColor;
-        setTimeout(tick, 300 + Math.random() * 200); // Random timing between 300-500ms
-      })();
-    }
-
-    // Initialize animation on load
-    addEventListener('load', ()=>{ 
-      animateDesSens(); 
-    }, {passive:true});
-  </script>
 </head>
 <body>
 
-  <!-- Section 1 -->
-  <section class="min-h-screen flex items-center justify-center relative z-10 px-4">
-    <div class="max-w-4xl text-center">
-      <h2 class="text-dynamic font-normal tracking-[-0.02em] leading-tight">
-        This is not a brand. It is an understanding.
-      </h2>
-    </div>
-  </section>
-
-  <!-- Section 2 -->
-  <section class="min-h-screen flex items-center justify-center relative z-10 px-4">
-    <div class="max-w-4xl text-center">
-      <h2 class="text-dynamic font-normal tracking-[-0.02em] leading-tight">
-        An inside joke. An open secret. A contradiction you are meant to feel.
-      </h2>
-    </div>
-  </section>
-
-  <!-- Section 3 -->
-  <section class="min-h-screen flex items-center justify-center relative z-10 px-4">
-    <div class="max-w-4xl text-center">
-      <h2 class="text-dynamic font-normal tracking-[-0.02em] leading-tight">
-        It rejects performance, status, spectacle.
-      </h2>
-    </div>
-  </section>
-
-  <!-- Section 4 -->
-  <section class="min-h-screen flex items-center justify-center relative z-10 px-4">
-    <div class="max-w-4xl text-center">
-      <h2 class="text-dynamic font-normal tracking-[-0.02em] leading-tight">
-        It calls you to stop, to notice, to breathe—then to reshape the world from what you truly see.
-      </h2>
-    </div>
-  </section>
-
-  <!-- Section 5 -->
-  <section class="min-h-screen flex items-center justify-center relative z-10 px-4">
-    <div class="max-w-4xl text-center">
-      <h2 class="text-dynamic font-normal tracking-[-0.02em] leading-tight">
-        It is when you hear the silence behind the noise.
-      </h2>
-    </div>
-  </section>
-
-  <!-- Section 6 -->
-  <section class="min-h-screen flex items-center justify-center relative z-10 px-4">
-    <div class="max-w-4xl text-center">
-      <h2 class="text-dynamic font-normal tracking-[-0.02em] leading-tight">
-        When you taste the air and feel your body again—your feet on the ground, your hands on the wheel.
-      </h2>
-    </div>
-  </section>
-
-  <!-- Section 7 -->
-  <section class="min-h-screen flex items-center justify-center relative z-10 px-4">
-    <div class="max-w-4xl text-center">
-      <h2 class="text-dynamic font-normal tracking-[-0.02em] leading-tight">
-        When you remember that life isn't something you follow, but a will you bring forth.
-      </h2>
-    </div>
-  </section>
-
-  <!-- Final section with French axiom -->
-  <section class="min-h-screen flex items-center justify-center relative z-10 px-4">
-    <h1 class="text-dynamic font-normal tracking-[-0.02em] text-center leading-tight max-w-4xl">
-      La vie est une condition <span id="des-sens-color" class="no-break">des sens</span>
-    </h1>
-  </section>
+  <div class="hero">
+    <h1>la vie est une condition des sens</h1>
+  </div>
 
 </body>
 </html>
